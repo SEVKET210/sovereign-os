@@ -1,0 +1,249 @@
+/* ============================================================
+   SOVEREIGN-OS — Design Tokens & Curated Theme Presets v3
+   Inspired by Dieter Rams / Braun / Leica / Haute Horlogerie
+   ============================================================
+
+   CURATED PRESETS:
+   1. Stealth Obsidian (Default / Sovereign Dark)
+      — Deepest obsidian #050507, Carbon card #0c0c0f
+      — Muted zinc #1f2026, Hover #2e3039
+      — Titanium white #ffffff + Cold muted cyan #4ef2d2 micro-indicators
+   2. Nordic Titanium (Industrial Cold Slate)
+      — Raw slate #0a0d12, Brushed alloy card #12161f
+      — Cold steel #1e2633, Hover #293445
+      — Arctic ice blue #70a5ff + Platinum #e2e8f0
+   3. Monastic Brass & Amber (Horological Luxury)
+      — Smoked basalt #080706, Dark walnut ash #12100d
+      — Antique bronze patina #262019, Hover #382f25
+      — Warm amber gold #e5a93c + Muted parchment #f5efe6
+   4. Cypherpunk High-Contrast (Tactical Terminal)
+      — Pure pitch black #000000, Console #080808
+      — Monochromatic razor #333333, Hover #4a4a4a
+      — Stark monochrome white #ffffff + Phosphor green #00ff66 telemetry
+   ============================================================ */
+
+:root,
+[data-theme="obsidian"],
+[data-theme="dark"] {
+  /* ── 1. Stealth Obsidian (Default / Sovereign Dark) ─────── */
+  --bg-primary:       #050507;
+  --bg-primary-raw:   5 5 7;
+  --bg-secondary:     #08080b;
+  --bg-secondary-raw: 8 8 11;
+  --bg-tertiary:      #0c0c0f;  /* Carbon card */
+  --bg-tertiary-raw:  12 12 15;
+  --bg-surface:       #121217;
+  --bg-surface-raw:   18 18 23;
+  --bg-raised:        #181820;
+  --bg-raised-raw:    24 24 32;
+
+  --border-hairline: rgba(255, 255, 255, 0.04);
+  --border-subtle:   #1f2026;  /* Muted zinc */
+  --border-moderate: #2e3039;  /* Hover */
+  --border-strong:   #444754;
+  --border-accent:   rgba(78, 242, 210, 0.40);
+
+  /* Accents: Titanium white + Cold muted cyan micro-indicators */
+  --clr-accent:       #ffffff;
+  --clr-accent-fg:    #050507;  /* High-contrast text on primary button */
+  --clr-accent-hover: #4ef2d2;
+  --clr-accent-dim:   #8b8d9c;
+  --clr-accent-muted: #333540;
+  --clr-accent-alpha: rgba(78, 242, 210, 0.12);
+  --accent-rgb:       78 242 210;
+
+  --clr-indicator:       #4ef2d2;  /* Cold muted cyan */
+  --clr-indicator-alpha: rgba(78, 242, 210, 0.16);
+  --indicator-rgb:       78 242 210;
+
+  --text-primary:   #ffffff;
+  --text-secondary: #a3a6b5;
+  --text-muted:     #5e6170;
+  --text-disabled:  #323440;
+
+  /* ── Functional Signals ─────────────────────────────────── */
+  --clr-positive:       #34d399;
+  --clr-positive-alpha: rgba(52, 211, 153, 0.12);
+  --clr-negative:       #f87171;
+  --clr-negative-alpha: rgba(248, 113, 113, 0.12);
+  --clr-caution:        #fbbf24;
+  --clr-caution-alpha:  rgba(251, 191, 36, 0.12);
+
+  /* ── Spacing (4px base grid) ─────────────────────────────── */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+
+  /* ── Radii (precision restrained) ───────────────────────── */
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   10px;
+  --radius-xl:   14px;
+  --radius-2xl:  20px;
+  --radius-full: 9999px;
+
+  /* ── Typography Scale ────────────────────────────────────── */
+  --text-2xs: clamp(0.60rem, 0.55vw + 0.48rem, 0.68rem);
+  --text-xs:  clamp(0.70rem, 0.60vw + 0.55rem, 0.78rem);
+  --text-sm:  clamp(0.82rem, 0.70vw + 0.65rem, 0.90rem);
+  --text-md:  clamp(0.92rem, 0.85vw + 0.72rem, 1.00rem);
+  --text-lg:  clamp(1.06rem, 1.10vw + 0.82rem, 1.20rem);
+  --text-xl:  clamp(1.22rem, 1.50vw + 0.90rem, 1.44rem);
+  --text-2xl: clamp(1.44rem, 2.00vw + 1.00rem, 1.80rem);
+  --text-3xl: clamp(1.80rem, 3.00vw + 1.10rem, 2.40rem);
+  --text-4xl: clamp(2.20rem, 4.00vw + 1.20rem, 3.20rem);
+  --text-5xl: clamp(2.80rem, 5.50vw + 1.30rem, 4.40rem);
+
+  /* ── Physics-Governed Easings ────────────────────────────── */
+  --ease-spring: cubic-bezier(0.34, 1.04, 0.64, 1);
+  --ease-out:    cubic-bezier(0.16, 1.00, 0.30, 1);
+  --ease-in:     cubic-bezier(0.70, 0.00, 0.84, 0);
+  --ease-linear: linear;
+
+  /* ── Durations ───────────────────────────────────────────── */
+  --dur-instant: 80ms;
+  --dur-fast:    140ms;
+  --dur-base:    220ms;
+  --dur-slow:    340ms;
+  --dur-enter:   420ms;
+
+  /* ── Shadows (depth without glow) ───────────────────────── */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.40), 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.50), 0 2px 4px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.60), 0 4px 8px rgba(0, 0, 0, 0.40);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.70), 0 8px 16px rgba(0, 0, 0, 0.45);
+
+  /* ── Z-Index Architecture ────────────────────────────────── */
+  --z-base:     1;
+  --z-raise:    10;
+  --z-float:    50;
+  --z-nav:      100;
+  --z-drawer:   300;
+  --z-modal:    400;
+  --z-toast:    800;
+}
+
+/* ── 2. Nordic Titanium (Industrial Cold Slate) ──────────── */
+[data-theme="nordic"],
+[data-theme="light"] {
+  --bg-primary:       #0a0d12;  /* Raw slate */
+  --bg-primary-raw:   10 13 18;
+  --bg-secondary:     #0e1219;
+  --bg-secondary-raw: 14 18 25;
+  --bg-tertiary:      #12161f;  /* Brushed alloy card */
+  --bg-tertiary-raw:  18 22 31;
+  --bg-surface:       #171d28;
+  --bg-surface-raw:   23 29 40;
+  --bg-raised:        #1e2634;
+  --bg-raised-raw:    30 38 52;
+
+  --border-hairline: rgba(255, 255, 255, 0.05);
+  --border-subtle:   #1e2633;  /* Cold steel */
+  --border-moderate: #293445;  /* Hover */
+  --border-strong:   #3d4d66;
+  --border-accent:   rgba(112, 165, 255, 0.40);
+
+  /* Accents: Arctic ice blue + Platinum micro-indicators */
+  --clr-accent:       #70a5ff;
+  --clr-accent-fg:    #0a0d12;
+  --clr-accent-hover: #8cb7ff;
+  --clr-accent-dim:   #446ab0;
+  --clr-accent-muted: #1e3357;
+  --clr-accent-alpha: rgba(112, 165, 255, 0.14);
+  --accent-rgb:       112 165 255;
+
+  --clr-indicator:       #e2e8f0;  /* Platinum */
+  --clr-indicator-alpha: rgba(226, 232, 240, 0.16);
+  --indicator-rgb:       226 232 240;
+
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #556987;
+  --text-disabled:  #2d3b4e;
+}
+
+/* ── 3. Monastic Brass & Amber (Horological Luxury) ──────── */
+[data-theme="brass"],
+[data-theme="sovereign"] {
+  --bg-primary:       #080706;  /* Smoked basalt */
+  --bg-primary-raw:   8 7 6;
+  --bg-secondary:     #0d0b09;
+  --bg-secondary-raw: 13 11 9;
+  --bg-tertiary:      #12100d;  /* Dark walnut ash */
+  --bg-tertiary-raw:  18 16 13;
+  --bg-surface:       #1a1714;
+  --bg-surface-raw:   26 23 20;
+  --bg-raised:        #24201c;
+  --bg-raised-raw:    36 32 28;
+
+  --border-hairline: rgba(229, 169, 60, 0.08);
+  --border-subtle:   #262019;  /* Antique bronze patina */
+  --border-moderate: #382f25;  /* Hover */
+  --border-strong:   #4f4234;
+  --border-accent:   rgba(229, 169, 60, 0.45);
+
+  /* Accents: Warm amber gold + Muted parchment */
+  --clr-accent:       #e5a93c;
+  --clr-accent-fg:    #080706;
+  --clr-accent-hover: #f0bd5e;
+  --clr-accent-dim:   #8c641e;
+  --clr-accent-muted: #4a340e;
+  --clr-accent-alpha: rgba(229, 169, 60, 0.14);
+  --accent-rgb:       229 169 60;
+
+  --clr-indicator:       #f5efe6;  /* Muted parchment */
+  --clr-indicator-alpha: rgba(245, 239, 230, 0.16);
+  --indicator-rgb:       245 239 230;
+
+  --text-primary:   #f5efe6;
+  --text-secondary: #c7b299;
+  --text-muted:     #786653;
+  --text-disabled:  #3d3429;
+}
+
+/* ── 4. Cypherpunk High-Contrast (Tactical Terminal) ─────── */
+[data-theme="cypherpunk"] {
+  --bg-primary:       #000000;  /* Pure pitch black */
+  --bg-primary-raw:   0 0 0;
+  --bg-secondary:     #040604;
+  --bg-secondary-raw: 4 6 4;
+  --bg-tertiary:      #080c08;  /* Console */
+  --bg-tertiary-raw:  8 12 8;
+  --bg-surface:       #0d140d;
+  --bg-surface-raw:   13 20 13;
+  --bg-raised:        #131e13;
+  --bg-raised-raw:    19 30 19;
+
+  --border-hairline: rgba(0, 255, 102, 0.08);
+  --border-subtle:   #1a2e1d;  /* Phosphor tint */
+  --border-moderate: #264a2c;  /* Hover */
+  --border-strong:   #3b7044;
+  --border-accent:   rgba(0, 255, 102, 0.50);
+
+  /* Accents: Matrix phosphor green + stark white telemetry */
+  --clr-accent:       #00ff66;
+  --clr-accent-fg:    #000000;
+  --clr-accent-hover: #33ff85;
+  --clr-accent-dim:   #00aa44;
+  --clr-accent-muted: #11331a;
+  --clr-accent-alpha: rgba(0, 255, 102, 0.14);
+  --accent-rgb:       0 255 102;
+
+  --clr-indicator:       #00ff66;  /* Pure phosphor green */
+  --clr-indicator-alpha: rgba(0, 255, 102, 0.18);
+  --indicator-rgb:       0 255 102;
+
+  --text-primary:   #e6ffe6;
+  --text-secondary: #85e39d;
+  --text-muted:     #447a4f;
+  --text-disabled:  #1d3d23;
+}

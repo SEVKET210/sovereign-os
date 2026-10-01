@@ -1,0 +1,118 @@
+/* ============================================================
+   SOVEREIGN-OS — Typography Matrix v3
+   ============================================================
+   Primary UI & Headings: Geist Sans / Inter Tight
+   — Optical sizing, tight letter-spacing tracking-[-0.03em], crisp contrast.
+
+   Cryptographic, Hashes & Numerical Data: JetBrains Mono / Geist Mono
+   — Tabular numbers tabular-nums, strict monospaced alignment.
+
+   Editorial Accents (Landing Page Display): Instrument Serif / Playfair Display
+   — Italicized, high-end editorial contrast against industrial monospaced labels.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+:root {
+  --font-sans: 'Geist', 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Geist', 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Geist', 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+  --font-editorial: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+}
+
+/* ── Primary UI & Headings — Optical Sizing & Tight Tracking ─ */
+
+.type-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-optical-sizing: auto;
+  color: var(--text-primary);
+}
+
+.type-headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  font-optical-sizing: auto;
+  color: var(--text-primary);
+}
+
+.type-title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  font-optical-sizing: auto;
+  color: var(--text-primary);
+}
+
+.type-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  font-optical-sizing: auto;
+  color: var(--text-secondary);
+}
+
+.type-caption {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.type-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+}
+
+/* ── Cryptographic, Hashes & Numerical Data ──────────────── */
+
+.type-mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+
+.tabular-nums,
+.tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* ── Editorial Accents (Landing Page Display) ─────────────── */
+
+.type-editorial {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+  font-style: italic;
+}
+
+/* ── Color State Utilities ────────────────────────────────── */
+
+.text-accent    { color: var(--clr-accent); }
+.text-indicator { color: var(--clr-indicator); }
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted     { color: var(--text-muted); }
+.text-positive  { color: var(--clr-positive); }
+.text-negative  { color: var(--clr-negative); }
+.text-caution   { color: var(--clr-caution); }

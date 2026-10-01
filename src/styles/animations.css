@@ -1,0 +1,223 @@
+/* ============================================================
+   SOVEREIGN-OS — Animations v2 (Physics-Governed)
+   ============================================================
+
+   MANIFESTO COMPLIANCE:
+   — Animations communicate state / hierarchy / confirmation ONLY.
+   — No decorative motion. No looping idle animations.
+   — Auth screens: zero overshoot (pure expo-out).
+   — All transitions use hardware-accelerated properties only.
+   — will-change declared only where actively transitioning.
+   — No floating, bouncing, or orbit-style keyframes.
+   ============================================================ */
+
+/* ── Structural Entry Keyframes ─────────────────────────────
+   These are STATE transitions (mount → visible).
+   Physics: expo-out approximation, no bounce.
+   ──────────────────────────────────────────────────────────── */
+
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes enter-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes enter-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes enter-scale {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Data / State Keyframes ──────────────────────────────────
+   Communicate real state changes (loading, processing).
+   NOT decorative.
+   ──────────────────────────────────────────────────────────── */
+
+@keyframes spinner {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Skeleton loading — communicates "data is loading" */
+@keyframes skeleton-sweep {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Ticker — data scrolling in a ledger column (functional) */
+@keyframes ticker-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* No idle animation on auth screens — zero keyframe */
+@keyframes noop { from { opacity: 1; } to { opacity: 1; } }
+
+/* ── Utility Animation Classes ───────────────────────────── */
+
+.anim-enter-up {
+  animation: enter-up var(--dur-enter) var(--ease-out) both;
+  will-change: transform, opacity;
+}
+
+.anim-enter-down {
+  animation: enter-down var(--dur-base) var(--ease-out) both;
+  will-change: transform, opacity;
+}
+
+.anim-enter-fade {
+  animation: enter-fade var(--dur-slow) var(--ease-out) both;
+  will-change: opacity;
+}
+
+.anim-enter-scale {
+  animation: enter-scale var(--dur-enter) var(--ease-out) both;
+  will-change: transform, opacity;
+}
+
+/* Stagger delays — structural hierarchy only */
+.stagger-1 { animation-delay: 40ms; }
+.stagger-2 { animation-delay: 80ms; }
+.stagger-3 { animation-delay: 120ms; }
+.stagger-4 { animation-delay: 160ms; }
+.stagger-5 { animation-delay: 200ms; }
+.stagger-6 { animation-delay: 240ms; }
+
+/* Spinner — loading state ONLY */
+.anim-spin {
+  animation: spinner 0.8s linear infinite;
+  will-change: transform;
+}
+
+/* Skeleton pulse */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 0%,
+    var(--bg-surface)  40%,
+    var(--bg-tertiary) 80%
+  );
+  background-size: 200% auto;
+  animation: skeleton-sweep 1.6s var(--ease-linear) infinite;
+}
+
+/* ── Interactive State Transitions ───────────────────────────
+   Applied via CSS transitions — NOT keyframe animations.
+   Hardware-accelerated (transform, opacity) only.
+   ──────────────────────────────────────────────────────────── */
+
+.interactive {
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color     var(--dur-fast) var(--ease-out),
+    color            var(--dur-fast) var(--ease-out),
+    opacity          var(--dur-fast) var(--ease-out),
+    transform        var(--dur-fast) var(--ease-out);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);  /* promote to compositor layer */
+}
+
+/* Precise lift — structural elevation, not decoration */
+.interactive:hover {
+  transform: translate3d(0, -1px, 0);
+}
+
+.interactive:active {
+  transform: translate3d(0, 0, 0) scale(0.985);
+  transition-duration: var(--dur-instant);
+}
+
+/* ── Surface Transitions ─────────────────────────────────── */
+.surface-transition {
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    border-color     var(--dur-base) var(--ease-out);
+}
+
+/* ── Ticker (functional data animation) ──────────────────── */
+.anim-ticker-in {
+  animation: ticker-in var(--dur-fast) var(--ease-out) both;
+  will-change: transform, opacity;
+}
+
+/* ── Zero CLS — Aspect Ratio Enforcement ─────────────────── */
+.ratio-16-9  { aspect-ratio: 16 / 9; }
+.ratio-4-3   { aspect-ratio: 4 / 3; }
+.ratio-1-1   { aspect-ratio: 1 / 1; }
+.ratio-golden { aspect-ratio: 1.618 / 1; }
+
+/* ── Hardware Acceleration Helpers ───────────────────────── */
+.gpu {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ── Scrollbar — Precision ───────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-moderate);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* ── Selection ───────────────────────────────────────────── */
+::selection {
+  background: var(--clr-accent-alpha);
+  color: var(--text-primary);
+}
+
+/* ── Focus Ring — Accessible but Precise ─────────────────── */
+:focus-visible {
+  outline: 1px solid var(--clr-accent);
+  outline-offset: 2px;
+}
